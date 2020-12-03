@@ -65,7 +65,6 @@ public class Author {
                 "authId=" + authId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", books=" + books +
                 '}';
     }
 
