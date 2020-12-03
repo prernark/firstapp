@@ -8,7 +8,7 @@ import java.util.Set;
 public class Publisher {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long publisherId;
+    private Long id; //IMP! IMP! Due to naming strategy, keep this 'id' else gives error and code doesnt work
 
     private String name;
     private String addrLine1;
@@ -17,7 +17,8 @@ public class Publisher {
     private int zip;
 
     @OneToMany
-    @JoinColumn (name = "pub_Id")
+//    @JoinColumn (name = "pub_Id")
+    @JoinColumn (name = "publisher_id") //Under the cover, it uses tablename_colname hence write 'publisher_id' as it needs to match
     private Set<Book> books = new HashSet<>();
 
     public Publisher() {
@@ -71,12 +72,12 @@ public class Publisher {
         this.zip = zip;
     }
 
-    public Long getPublisherId() {
-        return publisherId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPublisherId(Long publisherId) {
-        this.publisherId = publisherId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Set<Book> getBooks() {
@@ -103,10 +104,10 @@ public class Publisher {
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         Publisher publisher = (Publisher) object;
-        return java.util.Objects.equals(publisherId, publisher.publisherId);
+        return java.util.Objects.equals(id, publisher.id);
     }
 
     public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), publisherId);
+        return java.util.Objects.hash(super.hashCode(), id);
     }
 }
