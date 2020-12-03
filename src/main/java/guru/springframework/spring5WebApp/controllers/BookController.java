@@ -16,7 +16,7 @@ public class BookController {
     @RequestMapping(name = "/books")
     public String getBooks (Model bookModel) {
         bookModel.addAttribute("books", bookRepository.findAll());
-        return "books/listOfBooks";
+        return "books/listOfBooks"; //This tells the MVC View to look for template named 'listOfBooks.html' in the 'books' dir under 'templates'.
     }
 
 }
